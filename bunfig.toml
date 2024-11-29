@@ -1,0 +1,10 @@
+[build]
+entrypoints = ["src/index.ts"] 
+outdir = "dist"               
+
+[build.formats]
+esm = true
+cjs = true
+
+[build.dts]
+enabled = true

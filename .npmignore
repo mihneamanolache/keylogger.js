@@ -1,0 +1,18 @@
+# Exclude development files and folders
+/src                      # Source files (you only need the built `dist` folder)
+/node_modules             # Dependencies are not included in the package
+/misc                     # Miscellaneous files or directories
+/.git                     # Git configuration and metadata
+/.github                  # GitHub configuration files (e.g., workflows, templates)
+/tests                    # Test files or test-related directories
+/examples                 # Example files or directories
+*.config.*                # Configuration files (e.g., custom build configs)
+*.lock                    # Lock files (bun.lockb, package-lock.json, yarn.lock)
+
+# Ignore Mac-specific files
+.DS_Store                 # macOS system files
+
+# Exclude everything not in `dist` or README-related
+!dist                     # Allow the `dist` folder for build outputs
+!README.md                # Include the README for npm package page
+!LICENSE                  # Include the LICENSE file if present

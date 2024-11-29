@@ -1,0 +1,31 @@
+{
+    "name": "@mihnea.dev/keylogger.js",
+    "description": "A simple keylogger for the browser. Please use it responsibly!",
+    "version": "0.0.1",
+    "type": "module",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mihneamanolache/keylogger.js.git"
+    },
+    "author": "Mihnea Octavian Manolache <mihnea.dev@gmail.com> (https://github.com/mihneamanolache/)",
+    "main": "./dist/cjs/index.js", 
+    "module": "./dist/esm/index.js", 
+    "exports": {
+        ".": {
+            "import": "./dist/esm/index.js", 
+            "require": "./dist/cjs/index.js"
+        }
+    },
+    "types": "./dist/esm/index.d.ts", 
+    "scripts": {
+        "build:cjs": "bun build src/index.ts --format cjs --dts --outdir dist/cjs --clean",
+        "build:esm": "bun build src/index.ts --format esm --dts --outdir dist/esm --clean",
+        "build": "rm -rf dist && bun run build:cjs && bun run build:esm"
+    },
+    "devDependencies": {
+        "@types/bun": "latest"
+    },
+    "peerDependencies": {
+        "typescript": "^5.0.0"
+    }
+}

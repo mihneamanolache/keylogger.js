@@ -14,7 +14,7 @@ export interface ISession {
 
 export interface IPayload {
     /** Type of event captured. */
-    type:   "keypress" | "enter";
+    type:   "keypress" | "enter" | "click";
     /** Value of the captured event. */
     value:  string;
 }

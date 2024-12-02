@@ -83,7 +83,7 @@ This step demonstrates embedding Keylogger.js into a vulnerable webpage as part 
 1. The Keylogger.js library captures keystrokes and sends them to the webhook.
 2. The Python server decodes the Base64-encoded payload and logs the captured keystrokes.
 ```bash
-Decoded Payload: {"type":"keypress","value":"a","session":{...}}
+Decoded Payload: {"type":"enter","value":"a","session":{...}}
 Parsed JSON:
 {
     "type": "enter",

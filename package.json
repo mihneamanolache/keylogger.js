@@ -1,6 +1,6 @@
 {
     "name": "@mihnea.dev/keylogger.js",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": "Mihnea Octavian Manolache <mihnea.dev@gmail.com> (https://github.com/mihneamanolache/)",
     "repository": {
         "type": "git",
@@ -33,5 +33,9 @@
         "README.md",
         "LICENSE"
     ],
-    "license": "MIT"
+    "license": "MIT",
+    "keywords": [
+        "keylogger",
+        "security"
+    ]
 }
